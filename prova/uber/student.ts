@@ -2,7 +2,29 @@ function input(): string { let X: any = input; X.L = X.L || require("fs").readFi
 //function input(): string { let X: any = input; X.P = X.P || require("readline-sync"); return X.P.question() } // _FREE_ONLY_
 function write(text: any, endl="\n") { process.stdout.write("" + text + endl); }
 export {};
+class Pessoa{
+    private nome: string;
+    private dinheiro: number; 
+    constructor(name: string, money: number){
+        this.nome = name;
+        this.dinheiro = money; 
+    }
+    getNome(){
+      return this.nome;
+    }
+    getDinheiro(){
+      return this.dinheiro; 
+    }
+    setDinheiro(value: number){
+      if (value >= 0){
+        this.dinheiro = value; 
+      }
+      console.log(`e existe dinheiro negativo?`); 
+    }
+}
+class Moto {
 
+}
 class Adapter {
     setDriver(name: string, money: number): void {
     }

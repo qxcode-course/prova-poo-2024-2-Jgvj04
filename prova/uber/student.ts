@@ -21,9 +21,47 @@ class Pessoa{
       }
       console.log(`e existe dinheiro negativo?`); 
     }
+    toString(): string {
+      return `Passageiro: ${this.nome}, Grana: ${this.dinheiro}`;
+    }
 }
 class Moto {
+  private passageiro: Pessoa | null;
+  private motorista: Pessoa | null;
+  private custo: number;
 
+  constructor(){
+    this.passageiro = null;
+    this.motorista = null;
+    this.custo = 0; 
+  }
+  setDriver(motorista: Pessoa){
+    if (this.motorista == null){
+      this.motorista = motorista;
+    }
+  }
+  setPassenger(passageiro: Pessoa){
+    if (this.motorista != null && this.passageiro == null){
+      this.passageiro = passageiro;
+    }
+  }
+  drive(distancia: number){
+    if (this.motorista != null && this.passageiro != null){
+      this.custo = distancia; 
+    }
+  }
+  leavePassenger(){
+    if (this.passageiro != null && this.motorista != null && this.custo > this.passageiro.getDinheiro()){
+      this.custo -= this.passageiro.getDinheiro();
+      this.custo -= this.motorista.getDinheiro();
+    }
+    if (this.passageiro != null && this.custo <= this.passageiro.getDinheiro()){
+      this.custo -= this.passageiro.getDinheiro();
+    }
+  }
+  show(){
+    `Cost: ${this.custo}, Driver: ${this.motorista}, Passenger: ${this.passageiro}`;
+  }
 }
 class Adapter {
     setDriver(name: string, money: number): void {
